@@ -1,0 +1,39 @@
+{
+  "canonical": {
+    "pink": "#FFA6FF",
+    "blue": "#0090FF",
+    "axis": "#383838"
+  },
+  "bands": [
+    "pink",
+    "blue",
+    "axis",
+    "blue",
+    "pink"
+  ],
+  "ratio": "3:5",
+  "dark_ui_variant": {
+    "pink": "#FFA6FF",
+    "blue": "#0090FF",
+    "axis": "#525252"
+  },
+  "contrast": {
+    "pink_axis": 6.78,
+    "blue_axis": 3.59,
+    "pink_blue": 1.89,
+    "pink_axis_dark": 4.52,
+    "blue_axis_dark": 2.39,
+    "axis_bg_dark": 1.61,
+    "axis_dark_bg_dark": 2.42
+  },
+  "classic_1999": {
+    "pink": "#F5A9B8",
+    "blue": "#5BCEFA",
+    "axis": "#FFFFFF",
+    "contrast": {
+      "pink_axis": 1.87,
+      "blue_axis": 1.8,
+      "pink_blue": 1.04
+    }
+  }
+}
