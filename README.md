@@ -214,7 +214,17 @@ CC0 意味着你可以商用、改造、**不署名**地使用本仓库的任何
 
 **原始发布时间：2026-10-08。** 本仓库的 commit、tag（`v1.0.0`）与 Release 时间戳都是公开可验证的，可用于确认这面旗的最早出处。
 
-**唯一发布来源**：<https://github.com/Sakamonya/trans-flag-hc>。其它平台上同名的账号与本仓库无关。
+**唯一发布来源**：<https://github.com/Sakamonya/trans-flag-hc>
+
+**关于同名账号** —— 本人的真实身份**只有两个**：
+
+| 身份 | 说明 |
+|---|---|
+| GitHub [@Sakamonya](https://github.com/Sakamonya) | 本仓库所在账号 |
+| QQ ID 为 `Sakamonya` 的账号 | 本人的 QQ |
+
+**除此之外，任何平台上叫 Sakamonya（含任意大小写变体）的账号都不是本人**，与本设计无任何关系。
+若有人以「Sakamonya」之名与你接触、约稿、收费或索要授权，请**先通过本仓库的 Issue 或 GitHub 私信核实**。
 
 设计与取舍的完整记录（谁提的、哪些方案被否掉、数据是多少）见 [`docs/design-notes.md`](docs/design-notes.md)。
 

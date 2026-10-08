@@ -234,8 +234,19 @@ itself. Attribution is not a condition of use; it is a sentence you may say if y
 **First published: 2026-10-08.** The commit, tag (`v1.0.0`) and Release timestamps in this
 repository are publicly verifiable and can be used to establish the earliest provenance of this flag.
 
-**Canonical source**: <https://github.com/Sakamonya/trans-flag-hc>. Accounts with the same name on
-other platforms are not affiliated with this repository.
+**Canonical source**: <https://github.com/Sakamonya/trans-flag-hc>
+
+**On accounts using this name** — there are exactly **two** genuine identities:
+
+| Identity | Note |
+|---|---|
+| GitHub [@Sakamonya](https://github.com/Sakamonya) | the account hosting this repository |
+| The QQ account whose QQ ID is `Sakamonya` | the author's QQ |
+
+**Any other account named Sakamonya (in any capitalisation) on any platform is not this author** and
+has no connection to this design. If someone contacts you, offers commissions, asks for payment or
+requests licensing under the name "Sakamonya", **verify through this repository's Issues or GitHub
+direct messages first**.
 
 The full record of the design decisions — who proposed what, which options were rejected, and the
 measured numbers — is in [`docs/design-notes.md`](docs/design-notes.md) (Chinese).
