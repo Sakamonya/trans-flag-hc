@@ -174,18 +174,20 @@ def main() -> int:
         for name, col in CANON.items():
             check(col in text, f"{rel} 缺少 {name} {col}")
 
-    print("\nREADME 图片链接（markdown 图 + <picture> 里的 src/srcset 都要真实存在）")
-    md_img = re.compile(r"!\[[^\]]*\]\(([^)]+)\)")
+    print("\n文档内的文件链接（markdown 链接 + <picture> 的 src/srcset，含图片与普通链接）")
+    md_any = re.compile(r"\]\(([^)\s]+)\)")
     html_src = re.compile(r'(?:src|srcset)="([^"]+)"')
-    for rel in ("README.md", "README.en.md"):
+    for rel in ("README.md", "README.en.md", "docs/design-notes.md"):
         text = (ROOT / rel).read_text(encoding="utf-8")
-        links = [l.strip() for l in md_img.findall(text)]
+        links = [l.strip() for l in md_any.findall(text)]
         links += [l.strip() for l in html_src.findall(text)]
-        check(bool(links), f"{rel} 一个图片链接都没有")
-        bad = [l for l in links if not l.startswith("http") and not (ROOT / l).exists()]
-        for l in bad:
-            check(False, f"{rel} 引用了 {l}，但文件不存在")
-        print(f"  ok    {rel}  {len(links)} 个图片链接全部指向真实文件")
+        files = sorted({l for l in links if not l.startswith(("http", "#", "mailto:"))})
+        if rel.endswith(".md") and rel.startswith("README"):
+            check(bool(files), f"{rel} 没有任何指向文件的链接")
+        for l in files:
+            if not (ROOT / l.split("#")[0]).exists():
+                check(False, f"{rel} 引用了 {l}，但文件不存在")
+        print(f"  ok    {rel}  {len(files)} 个文件链接全部存在")
 
     print("\nREADME 目录锚点（#链接必须有落点）")
     anchor = re.compile(r"\]\(#([^)]+)\)")
