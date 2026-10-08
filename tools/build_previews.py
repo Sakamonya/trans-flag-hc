@@ -52,6 +52,9 @@ THEMES = {
 }
 SUFFIX = {"dark": "", "light": "-light"}
 
+#: 溯源水印：出现在 hero 与社交分享卡上
+CREDIT_LINE = "Sakamonya · github.com/Sakamonya/trans-flag-hc · CC0"
+
 SERIES = {"classic": "#6E7681", "hc": PINK}
 
 
@@ -140,6 +143,8 @@ def fig_hero(theme: str = "dark") -> None:
     x = (W - 3 * 230) // 2
     for name, col in (("粉 Pink", PINK), ("蓝 Blue", BLUE), ("中轴 Axis", AXIS)):
         x += chip_inline(d, x, 900, col, name, txt=th["txt"], txt3=th["txt3"])
+    # 溯源水印：图常被单独转走（不带仓库），这一行让人找得回来
+    T(d, W // 2, 958, CREDIT_LINE, 20, th["txt3"], "regular", align="c", tracking=0.6)
     out = f"01-hero{SUFFIX[theme]}.png"
     img.convert("RGB").save(PRE / out, optimize=True)
     print(f"  {out}")
@@ -170,6 +175,7 @@ def fig_social() -> None:
         d.rounded_rectangle((cx, 496, cx + 26, 522), radius=6, fill=col)
         T(d, cx + 36, 496, col, 22, TXT3, "mono")
         cx += 150
+    T(d, x, 572, CREDIT_LINE, 20, TXT3, "regular", tracking=0.4)
     img.convert("RGB").save(ASSETS / "social-card-1200x630.png", optimize=True)
     print("  assets/social-card-1200x630.png")
 

@@ -134,11 +134,13 @@
     <fieldset>
       <legend>导出</legend>
       <div class="stagebar">
+        <button class="primary" id="copy-link">复制分享链接</button>
         <button id="dl-png">PNG 1500×900</button>
         <button id="dl-svg">SVG 矢量</button>
         <button id="copy-css">复制 CSS 变量</button>
         <button id="copy-hex">复制色值</button>
       </div>
+      <p class="hint">「复制分享链接」会把当前配色、中轴宽度、描边和预览底色一起编进网址——发给别人，对方打开就是你调好的那一版。</p>
       <p class="hint">SVG 用比例定位（viewBox 1500×900），放大到任意尺寸都不损失精度。导出 PNG 为纯色块，无透明背景。</p>
     </fieldset>
   </aside>
@@ -291,6 +293,59 @@
     el("c-outline").value = state.outlineColor;
     el("w-outline").value = state.outlineWidth;
     el("t-outline").value = state.outlineWidth + "px";
+    syncHash();
+  }
+
+  /* -------------------------- 分享链接 -------------------------- */
+
+  var HEX6 = /^[0-9a-fA-F]{6}$/;
+
+  function encodeHash() {
+    var p = new URLSearchParams();
+    p.set("pink", state.pink.slice(1));
+    p.set("blue", state.blue.slice(1));
+    p.set("axis", state.axis.slice(1));
+    if (state.ratio !== 100) p.set("ratio", state.ratio);
+    if (state.swapped) p.set("swapped", "1");
+    if (state.outline) {
+      p.set("outline", "1");
+      p.set("ow", state.outlineWidth);
+      p.set("oc", state.outlineColor.slice(1));
+    }
+    if (state.bg !== "#0D1117") p.set("bg", state.bg.replace("#", ""));
+    return "#" + p.toString();
+  }
+
+  function applyHash() {
+    var raw = location.hash.replace(/^#/, "");
+    if (!raw) return false;
+    var p = new URLSearchParams(raw), applied = false;
+    function col(key) {
+      var v = p.get(key);
+      if (v && HEX6.test(v)) { applied = true; return "#" + v.toUpperCase(); }
+      return null;
+    }
+    var c;
+    c = col("pink"); if (c) state.pink = c;
+    c = col("blue"); if (c) state.blue = c;
+    c = col("axis"); if (c) state.axis = c;
+    var r = parseInt(p.get("ratio"), 10);
+    if (r >= 40 && r <= 220) { state.ratio = r; applied = true; }
+    if (p.get("swapped") === "1") { state.swapped = true; applied = true; }
+    if (p.get("outline") === "1") {
+      state.outline = true; applied = true;
+      var w = parseInt(p.get("ow"), 10);
+      if (w >= 4 && w <= 60) state.outlineWidth = w;
+      c = col("oc"); if (c) state.outlineColor = c;
+    }
+    var bg = p.get("bg");
+    if (bg === "checker") { state.bg = "checker"; applied = true; }
+    else if (bg && HEX6.test(bg)) { state.bg = "#" + bg.toUpperCase(); applied = true; }
+    return applied;
+  }
+
+  function syncHash() {
+    try { history.replaceState(null, "", encodeHash()); } catch (e) { /* file:// 下可能受限 */ }
   }
 
   /* ---------------------------- 交互 ---------------------------- */
@@ -410,7 +465,14 @@
          "CSS 变量已复制");
   });
 
+  el("copy-link").addEventListener("click", function () {
+    var url = location.href.split("#")[0] + encodeHash();
+    copy(url, "分享链接已复制");
+  });
+
+  var loaded = applyHash();
   render();
+  if (loaded) { toast("已载入链接里的配色"); }
 })();
 </script>
 </body>
