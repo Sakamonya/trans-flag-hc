@@ -223,8 +223,10 @@ All content in this repository produced by this project is released under **CC0 
 | **Derivative design** | **Sakamonya**. Keeps the original five-stripe structure and symmetry, rewrites the light–dark structure and colour intensity |
 | **Implementation** | **蓝色大肥鱼** (Blue Big Fat Fish), an AI assistant — preview images, build scripts, documentation and repository setup |
 
-CC0 means you may use anything here commercially, adapt it, or **omit credit** — including the flag
-itself. Attribution is not a condition of use; it is a sentence you may say if you wish to:
+CC0 covers everything produced by this project — commercial use, adaptation and **omitting credit**
+are all fine. The 1999 five-stripe skeleton is ineligible for copyright in the first place: there is
+no right to waive, and no one to ask for permission.
+Attribution is not a condition of use; it is a sentence you may say if you wish to:
 
 > Original design by Monica Helms (1999), high-contrast derivative by Sakamonya
 > https://github.com/Sakamonya/trans-flag-hc
