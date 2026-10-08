@@ -183,6 +183,17 @@ def main() -> int:
             check(False, f"{rel} 引用了 {l}，但文件不存在")
         print(f"  ok    {rel}  {len(links)} 个图片链接全部指向真实文件")
 
+    print("\nREADME 目录锚点（#链接必须有落点）")
+    anchor = re.compile(r"\]\(#([^)]+)\)")
+    for rel in ("README.md", "README.en.md"):
+        text = (ROOT / rel).read_text(encoding="utf-8")
+        ids = set(re.findall(r'<a id="([^"]+)"', text))
+        links = set(anchor.findall(text))
+        check(bool(links), f"{rel} 没有任何目录锚点链接")
+        for m in sorted(l for l in links if l not in ids):
+            check(False, f"{rel} 的目录链接 #{m} 找不到对应的 <a id>")
+        print(f"  ok    {rel}  {len(links)} 个锚点链接全部有落点")
+
     print("\n孤儿文件（在仓库里但没有任何文档提到）")
     text = "".join((ROOT / r).read_text(encoding="utf-8")
                    for r in ("README.md", "README.en.md", "docs/design-notes.md"))

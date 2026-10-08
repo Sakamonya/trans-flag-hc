@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="24" viewBox="0 0 150 24" role="img" aria-label="formats: SVG and PNG up to 3000px">
+  <title>formats: SVG / PNG / 3000px</title>
+  <rect width="150" height="24" rx="5" fill="#2D333B"/>
+  <path d="M66 0h79a5 5 0 0 1 5 5v14a5 5 0 0 1-5 5H66z" fill="#4C8EDA"/>
+  <text x="33" y="16" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" fill="#E6EDF3" text-anchor="middle">formats</text>
+  <text x="105" y="16" font-family="Segoe UI,Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#08172B" text-anchor="middle">SVG / PNG</text>
+</svg>

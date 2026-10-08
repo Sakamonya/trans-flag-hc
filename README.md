@@ -2,15 +2,33 @@
 
 **Trans Pride Flag · High Contrast Edition**
 
+![license](assets/badge-license.svg) ![palette](assets/badge-palette.svg) ![formats](assets/badge-formats.svg)
+
 1999 年 Monica Helms 原设计的衍生重设计。五条等宽的结构不动，只重写明暗关系和色彩强度：
 中轴由整面旗**最亮**的一环翻转为**最暗**的一环，粉蓝对调，蓝压暗，粉推到 H300°。
 
 原版粉与蓝的对比度只有 **1.04 : 1**——几乎等于没有，整面旗靠中间那条白撑住辨识度。
 这一版把每个相邻边界都拉开，所以缩小、叠深色底、上刺绣，结构都还在。
 
+> **直接取用** ｜ [矢量 SVG](flag/trans-flag-hc.svg) ｜ [主图 1500×900](flag/trans-flag-hc-1500x900.png) ｜ [高清 3000×1800](flag/trans-flag-hc-3000x1800.png) ｜ [头像](assets/avatar-1080.png) ｜ [手机壁纸](assets/wallpaper-1200x1800.png) ｜ [深色底亮轴版](flag/trans-flag-hc-dark-ui-1500x900.png) ｜ [在线调色器](web/index.html)
+
 ![跨性别骄傲旗高对比版](preview/01-hero.png)
 
 ---
+
+<a id="toc"></a>
+
+## 目录
+
+| 设计 | 用法 | 其它 |
+|---|---|---|
+| [和 1999 原版的差别](#compare) | [深色底怎么办](#dark-bg) | [文件清单](#files) |
+| [小尺寸可读性](#legibility) | [实物感](#cloth) | [调色器](#colorizer) |
+| [色彩规格](#palette) | [使用建议](#usage) | [自己改一版](#rebuild) · [授权](#license) |
+
+---
+
+<a id="compare"></a>
 
 ## 和 1999 原版的差别
 
@@ -32,6 +50,8 @@
 
 ---
 
+<a id="legibility"></a>
+
 ## 小尺寸可读性
 
 ![可读性实测](preview/03-legibility.png)
@@ -39,6 +59,8 @@
 原版在 48px 以下粉与蓝并成一条；本版 24px 起仍能读出五条。
 
 ---
+
+<a id="palette"></a>
 
 ## 色彩规格
 
@@ -62,6 +84,8 @@
 
 ---
 
+<a id="dark-bg"></a>
+
 ## 深色底怎么办
 
 ![深色底上的中轴问题](preview/07-dark-bg.png)
@@ -78,6 +102,8 @@
 
 ---
 
+<a id="cloth"></a>
+
 ## 实物感
 
 ![布面渲染](preview/06-cloth.png)
@@ -85,6 +111,8 @@
 同一组色值按布面折叠渲染（程序化，非实拍）：褶皱吃掉的只是明度，吃不掉结构。
 
 ---
+
+<a id="files"></a>
 
 ## 文件
 
@@ -110,6 +138,8 @@
 
 ---
 
+<a id="colorizer"></a>
+
 ## 调色器
 
 `web/index.html` 是**单文件网页**，无外部依赖：双击打开，或直接挂到 GitHub Pages。
@@ -121,6 +151,8 @@
 - 导出 PNG 1500×900、导出比例化 SVG、复制 CSS 变量
 
 ---
+
+<a id="rebuild"></a>
 
 ## 自己改一版
 
@@ -142,6 +174,8 @@ python tools/verify.py
 
 ---
 
+<a id="usage"></a>
+
 ## 使用建议
 
 - 深色模式 Banner、深色 UI → **亮轴变体**或描边版
@@ -151,6 +185,8 @@ python tools/verify.py
 - 旗宽 24px 以下 → 建议只保留三段，或改用单色描边版
 
 ---
+
+<a id="license"></a>
 
 ## 授权
 
@@ -165,4 +201,4 @@ python tools/verify.py
 > "这面旗无论怎么挂都是正的——无论你处在人生的哪个阶段、往哪个方向走，都能找到属于自己的正确。"
 > —— Monica Helms
 
-[English README](README.en.md)
+[回到目录](#toc) ｜ [English README](README.en.md)

@@ -1,5 +1,7 @@
 # Trans Pride Flag · High Contrast Edition
 
+![license](assets/badge-license.svg) ![palette](assets/badge-palette.svg) ![formats](assets/badge-formats.svg)
+
 A derivative redesign of the Transgender Pride Flag designed by **Monica Helms in 1999**.
 The five equal stripes stay. What changed is the light–dark structure and the colour intensity:
 the centre stripe flips from the **lightest** band in the flag to the **darkest**, pink and blue swap
@@ -10,9 +12,25 @@ The flag is legible only because of the white stripe in the middle. Here every a
 is pulled apart, so the structure survives being scaled down, placed on dark backgrounds,
 or embroidered.
 
+> **Get it** ｜ [SVG](flag/trans-flag-hc.svg) ｜ [1500×900](flag/trans-flag-hc-1500x900.png) ｜ [3000×1800](flag/trans-flag-hc-3000x1800.png) ｜ [avatar](assets/avatar-1080.png) ｜ [wallpaper](assets/wallpaper-1200x1800.png) ｜ [dark-UI variant](flag/trans-flag-hc-dark-ui-1500x900.png) ｜ [colouriser](web/index.html)
+
 ![Trans pride flag, high contrast edition](preview/01-hero.png)
 
 ---
+
+<a id="toc"></a>
+
+## Contents
+
+| Design | Usage | More |
+|---|---|---|
+| [vs. the 1999 original](#compare) | [On dark backgrounds](#dark-bg) | [Files](#files) |
+| [Small-size legibility](#legibility) | [Cloth render](#cloth) | [Colouriser](#colorizer) |
+| [Colour specification](#palette) | [Usage notes](#usage) | [Rebuild](#rebuild) · [Licence](#license) |
+
+---
+
+<a id="compare"></a>
 
 ## How it differs from the 1999 original
 
@@ -41,6 +59,8 @@ Three decisions:
 
 ---
 
+<a id="legibility"></a>
+
 ## Small-size legibility
 
 ![Legibility test](preview/03-legibility.png)
@@ -49,6 +69,8 @@ Below 48 px the classic pink and blue merge into one band. This version still re
 stripes from 24 px upward.
 
 ---
+
+<a id="palette"></a>
 
 ## Colour specification
 
@@ -73,6 +95,8 @@ image, and the colouriser's defaults all use it:
 
 ---
 
+<a id="dark-bg"></a>
+
 ## On dark backgrounds
 
 ![The axis problem on dark backgrounds](preview/07-dark-bg.png)
@@ -92,6 +116,8 @@ The light-axis variant is for **dark backgrounds only**. Do not treat it as the 
 
 ---
 
+<a id="cloth"></a>
+
 ## Cloth render
 
 ![Cloth render](preview/06-cloth.png)
@@ -100,6 +126,8 @@ The same colours rendered as folded cloth (procedural, not a photograph): folds 
 luminance, not structure.
 
 ---
+
+<a id="files"></a>
 
 ## Files
 
@@ -125,6 +153,8 @@ luminance, not structure.
 
 ---
 
+<a id="colorizer"></a>
+
 ## Colouriser
 
 `web/index.html` is a **single file** with no dependencies: open it directly, or serve it from
@@ -137,6 +167,8 @@ GitHub Pages.
 - Export PNG 1500×900, export ratio-based SVG, copy CSS variables
 
 ---
+
+<a id="rebuild"></a>
 
 ## Fork and rebuild
 
@@ -161,6 +193,8 @@ Segoe UI; on non-Windows systems replace the font paths in `tools/flagkit.py`.
 
 ---
 
+<a id="usage"></a>
+
 ## Usage notes
 
 - Dark-mode banners, dark UI → **light-axis variant** or the outlined version
@@ -170,6 +204,8 @@ Segoe UI; on non-Windows systems replace the font paths in `tools/flagkit.py`.
 - Below 24 px wide → use three stripes only, or a one-colour outlined mark
 
 ---
+
+<a id="license"></a>
 
 ## Licence
 
@@ -189,4 +225,4 @@ measured numbers — is in [`docs/design-notes.md`](docs/design-notes.md) (Chine
 > you are going, you can find your own correct."
 > — Monica Helms
 
-[中文 README](README.md)
+[Back to contents](#toc) ｜ [中文 README](README.md)
