@@ -241,7 +241,7 @@ repository are publicly verifiable and can be used to establish the earliest pro
 | Identity | Note |
 |---|---|
 | GitHub [@Sakamonya](https://github.com/Sakamonya) | the account hosting this repository |
-| QQ (with **QID `Sakamonya`**) | a QQ QID is network-wide unique — one QQ number can bind exactly one QID. Search `Sakamonya` inside QQ and you will find that single account |
+| QQ (with **QID `Sakamonya`**) | a QQ QID is network-wide unique — one QQ number can bind exactly one QID. Search `Sakamonya` inside QQ and you will find that single account; its profile description **links back to this repository** |
 
 **Any other account named Sakamonya (in any capitalisation) on any platform is not this author** and
 has no connection to this design. If someone contacts you, offers commissions, asks for payment or

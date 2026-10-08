@@ -221,7 +221,7 @@ CC0 意味着你可以商用、改造、**不署名**地使用本仓库的任何
 | 身份 | 说明 |
 |---|---|
 | GitHub [@Sakamonya](https://github.com/Sakamonya) | 本仓库所在账号 |
-| QQ（**QID：`Sakamonya`**） | QQ 的 QID 全网唯一，一个 QQ 号只能绑定一个。在 QQ 内直接搜索 `Sakamonya` 即可找到该账号，且搜索结果唯一 |
+| QQ（**QID：`Sakamonya`**） | QQ 的 QID 全网唯一，一个 QQ 号只能绑定一个。在 QQ 内搜索 `Sakamonya` 即可找到该账号，且搜索结果唯一；该账号的**个人说明中亦链接回本仓库** |
 
 **除此之外，任何平台上叫 Sakamonya（含任意大小写变体）的账号都不是本人**，与本设计无任何关系。
 若有人以「Sakamonya」之名与你接触、约稿、收费或索要授权，请**先通过本仓库的 Issue 或 GitHub 私信核实**。
