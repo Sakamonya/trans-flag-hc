@@ -134,14 +134,16 @@ def fig_hero(theme: str = "dark") -> None:
     T(d, W // 2, 190, "高对比版本  ·  High Contrast Edition", 30, th["accent"], "light",
       align="c", tracking=1.2)
 
+    # 深色底上用亮轴变体：中轴 #383838 对深色背景只有 1.27–1.40:1，会被吃掉。
+    colors = DARKC if theme == "dark" else fk.PALETTE
     fw = 980
     fh = round(fw * 3 / 5)
-    paste_flag(img, ((W - fw) // 2, 258, fw, fh), radius=14, shadow=True,
+    paste_flag(img, ((W - fw) // 2, 258, fw, fh), colors=colors, radius=14, shadow=True,
                shadow_alpha=th["shadow_alpha"])
     d = ImageDraw.Draw(img)
 
     x = (W - 3 * 230) // 2
-    for name, col in (("粉 Pink", PINK), ("蓝 Blue", BLUE), ("中轴 Axis", AXIS)):
+    for name, col in (("粉 Pink", PINK), ("蓝 Blue", BLUE), ("中轴 Axis", colors["axis"])):
         x += chip_inline(d, x, 900, col, name, txt=th["txt"], txt3=th["txt3"])
     # 溯源水印：图常被单独转走（不带仓库），这一行让人找得回来
     T(d, W // 2, 958, CREDIT_LINE, 20, th["txt3"], "regular", align="c", tracking=0.6)
@@ -158,9 +160,11 @@ def fig_social() -> None:
     glow(img, (-200, 120, 700, 900), BLUE, alpha=46, blur=120)
     d.rectangle((0, 0, W, 6), fill=PINK)
 
+    # 社交卡只有一张（GitHub Social preview 不支持按主题切换），而卡的底色是 #0D1117，
+    # 中轴 #383838 在上面只有 1.61:1 会被吃掉 —— 所以这里直接用亮轴变体。
     fw = 560
     fh = round(fw * 3 / 5)
-    paste_flag(img, (76, (H - fh) // 2 + 8, fw, fh), radius=12, shadow=True)
+    paste_flag(img, (76, (H - fh) // 2 + 8, fw, fh), colors=DARKC, radius=12, shadow=True)
 
     x = 700
     T(d, x, 150, "HIGH CONTRAST EDITION", 22, PINK, "semibold", tracking=2.6)
@@ -171,7 +175,7 @@ def fig_social() -> None:
     T(d, x, 388, "五条等宽 · 中轴翻暗 · 粉蓝对调", 24, TXT2)
     T(d, x, 428, "每个相邻边界都有对比", 24, TXT2)
     cx = x
-    for col in (PINK, BLUE, AXIS):
+    for col in (PINK, BLUE, DARK_AXIS):
         d.rounded_rectangle((cx, 496, cx + 26, 522), radius=6, fill=col)
         T(d, cx + 36, 496, col, 22, TXT3, "mono")
         cx += 150
@@ -353,7 +357,7 @@ def fig_spec() -> None:
     d.line((96, 1220, W - 96, 1220), fill=BORDER, width=2)
     T(d, 96, 1250, "本仓库唯一正式规格即上表三色（定稿版）。成品文件、预览图、调色器网页三处默认值已对齐。",
       24, TXT2)
-    T(d, 96, 1290, "深色 UI 另有亮轴变体（中轴 #525252），只用于深色底，不替代正式规格。", 24, TXT2)
+    T(d, 96, 1290, "深色 UI 另有亮轴变体（中轴 #525252），不替代正式规格。", 24, TXT2)
     img.convert("RGB").save(PRE / "04-color-spec.png", optimize=True)
     print("  04-color-spec.png")
 
@@ -499,7 +503,7 @@ def fig_darkbg() -> None:
     cols = [
         ("经典版 1999", fk.CLASSIC, fk.CLASSIC_BANDS, "中轴是白的，边界 1.87:1", "#FFFFFF"),
         ("高对比版 · 定稿", fk.PALETTE, fk.BANDS, "中轴 #383838  边界 1.61:1  ← 会被吃掉", "#FF7B72"),
-        ("亮轴变体 · 深色 UI 专用", DARKC, fk.BANDS, f"中轴 {DARK_AXIS}  边界 2.42:1", "#3FB950"),
+        ("亮轴变体", DARKC, fk.BANDS, f"中轴 {DARK_AXIS}  边界 2.42:1", "#3FB950"),
     ]
     cw, ch = round(1200 * 3 / 5), 0
     for i, (title, colors, bands, note, tone) in enumerate(cols):
@@ -517,7 +521,7 @@ def fig_darkbg() -> None:
     T(d, 80, 590, "为什么不是简单加一圈白描边：描边只包住旗子外沿，救不了中间那条。中轴要么压到比背景深、", 24, TXT2)
     T(d, 80, 626, "要么抬到比背景亮。亮轴变体由脚本求解：在 #0D1117 上扫描全部灰度，取「与背景 / 蓝 / 粉", 24, TXT2)
     T(d, 80, 662, f"三条边界里最弱的那条」最大的解，得到 {DARK_AXIS}。", 24, TXT2)
-    T(d, 80, 726, "浅色底上请用正式规格；亮轴变体只用于深色 UI，不要拿它当默认色值。", 24, PINK)
+    T(d, 80, 726, "亮轴变体是一支独立变体，不替代仓库默认的正式规格。", 24, TXT2)
     img.convert("RGB").save(PRE / "07-dark-bg.png", optimize=True)
     print("  07-dark-bg.png")
 
@@ -537,7 +541,7 @@ def fig_variants() -> None:
     row1 = [
         ("标准版", "屏幕、印刷、默认", fk.PALETTE, "flag/trans-flag-hc.svg"),
         ("白描边版", "深色底直贴，边缘不糊", fk.PALETTE, "flag/…-outline-white.svg"),
-        ("亮轴变体", "深色 UI 专用", DARKC, "flag/trans-flag-hc-dark-ui.svg"),
+        ("亮轴变体", "中轴 #525252", DARKC, "flag/trans-flag-hc-dark-ui.svg"),
     ]
     for i, (name, use, colors, path) in enumerate(row1):
         x, y = 80 + i * 480, 190

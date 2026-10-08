@@ -102,8 +102,6 @@
 所以另出一个**亮轴变体**：中轴换成 `#525252`，中轴与背景的对比度从 1.61 提到 **2.42**（三条相邻边界里最弱的一条——对蓝——也有 2.39）。
 这个值不是拍的，是在 `#0D1117` 上扫描全部灰度、取「与背景 / 粉 / 蓝三条边界里最弱那条」最大的解算出来的（见 `tools/flagkit.py` 的 `solve_dark_axis()`）。
 
-亮轴变体**只用于深色底**，不要拿它当默认色值。
-
 ![深色场景应用](preview/05-scene-dark-ui.png)
 
 ---
@@ -128,7 +126,7 @@
 | `flag/trans-flag-hc-1500x900.png` | 1500×900 | 屏幕主图 |
 | `flag/trans-flag-hc-3000x1800.png` | 3000×1800 | 高清 / 视网膜屏 |
 | `flag/trans-flag-hc-outline-white-1548x948.png` `flag/trans-flag-hc-outline-white.svg` | 1548×948 / 矢量 | 24px 白描边，深色底直贴 |
-| `flag/trans-flag-hc-dark-ui-1500x900.png` `flag/trans-flag-hc-dark-ui.svg` | 1500×900 / 矢量 | 亮轴变体，深色 UI 专用 |
+| `flag/trans-flag-hc-dark-ui-1500x900.png` `flag/trans-flag-hc-dark-ui.svg` | 1500×900 / 矢量 | 亮轴变体（中轴 `#525252`） |
 | `flag/trans-flag-hc-onecolor-white-1500x900.png` `flag/trans-flag-hc-onecolor-white.svg` | 1500×900 / 矢量 | 单色白，刺绣 / 烫印（透明底） |
 | `flag/trans-flag-hc-onecolor-pink-1500x900.png` `flag/trans-flag-hc-onecolor-pink.svg` | 1500×900 / 矢量 | 单色粉，亮底印刷 / 贴纸（透明底） |
 | `assets/avatar-1080.png` `avatar-512.png` | 方图 | 头像 |
@@ -198,7 +196,7 @@ python tools/verify.py
 
 ## 授权
 
-本仓库全部内容采用 **CC0 1.0**（放弃一切权利，进入公有领域），详见 [LICENSE](LICENSE)。
+本仓库中**由本项目产生的全部内容**采用 **CC0 1.0**（放弃一切权利，进入公有领域），详见 [LICENSE](LICENSE)。
 
 | | |
 |---|---|

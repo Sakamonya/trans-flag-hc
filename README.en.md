@@ -116,8 +116,6 @@ contrast from 1.61 to **2.42** (even the weakest of the three adjacent boundarie
 reaches 2.39). That value is not a guess — it is solved by scanning every grey on `#0D1117` and
 maximising the weakest of the three adjacent boundaries (see `solve_dark_axis()` in `tools/flagkit.py`).
 
-The light-axis variant is for **dark backgrounds only**. Do not treat it as the default.
-
 ![Dark UI scene](preview/05-scene-dark-ui.png)
 
 ---
@@ -143,7 +141,7 @@ luminance, not structure.
 | `flag/trans-flag-hc-1500x900.png` | 1500×900 | screen |
 | `flag/trans-flag-hc-3000x1800.png` | 3000×1800 | hi-dpi |
 | `flag/trans-flag-hc-outline-white-1548x948.png`, `flag/trans-flag-hc-outline-white.svg` | 1548×948 / vector | 24 px white outline, drops onto dark backgrounds |
-| `flag/trans-flag-hc-dark-ui-1500x900.png`, `flag/trans-flag-hc-dark-ui.svg` | 1500×900 / vector | light-axis variant, dark UI only |
+| `flag/trans-flag-hc-dark-ui-1500x900.png`, `flag/trans-flag-hc-dark-ui.svg` | 1500×900 / vector | light-axis variant (axis `#525252`) |
 | `flag/trans-flag-hc-onecolor-white-1500x900.png`, `flag/trans-flag-hc-onecolor-white.svg` | 1500×900 / vector | one-colour white, embroidery (transparent) |
 | `flag/trans-flag-hc-onecolor-pink-1500x900.png`, `flag/trans-flag-hc-onecolor-pink.svg` | 1500×900 / vector | one-colour pink, stickers (transparent) |
 | `assets/avatar-*.png` | square | avatars |
@@ -216,8 +214,8 @@ Segoe UI; on non-Windows systems replace the font paths in `tools/flagkit.py`.
 
 ## Licence
 
-Everything in this repository is released under **CC0 1.0** (all rights waived, public domain),
-see [LICENSE](LICENSE).
+All content in this repository produced by this project is released under **CC0 1.0**
+(all rights waived, public domain), see [LICENSE](LICENSE).
 
 | | |
 |---|---|

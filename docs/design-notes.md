@@ -26,7 +26,7 @@
 
 | 决定 | 谁提的 | 状态 |
 |---|---|---|
-| 五条等宽、上下对称的骨架 | Monica Helms，1999（公有领域） | 保留，未改动 |
+| 五条等宽、上下对称的骨架 | Monica Helms，1999（不受著作权保护，见本节表后注） | 保留，未改动 |
 | 中轴由最亮（白）翻转为最暗 | 用户（见元宝对话「整体结构大致就在这两版之间了」） | 已确认 |
 | 粉蓝对调，粉在外圈 | 用户 | 已确认 |
 | 粉推到 H300°、削弱二元暗示 | 用户 | 已确认 |
@@ -40,6 +40,15 @@
 | 全部效果图、构建脚本、文档撰写、仓库发布 | 蓝色大肥鱼（AI 助手）执行 | 已由 Sakamonya 确认 |
 
 原始素材保留在仓库之外：`../hicontrast_pack/`。本仓库没有覆盖或删除其中任何文件。
+
+**表后注 · 1999 原版的著作权状态**（2026-10-08 核查）：维基共享资源的 `File:Transgender_Pride_flag.svg`
+挂的是 `{{PD-flag}}`，模板原文为「ineligible for copyright and therefore in the public domain,
+because it consists entirely of information that is common property and contains no original authorship」，
+并归类在 `PD-ineligible license tags` 之下；Commons API 对该文件返回 `Copyrighted: false`、`AttributionRequired: false`。
+
+也就是说：原版**并非**经由「权利人放弃权利」或「保护期届满」而进入公有领域，
+而是**自始不满足著作权保护条件**（条纹排列过简，达不到独创性门槛）。
+这是一项第三方（维基共享资源）的认定，不是法院判决。
 
 ---
 
@@ -87,7 +96,7 @@ argmax_g  min( contrast(g, #0D1117), contrast(g, #FFA6FF), contrast(g, #0090FF) 
 结果 `#525252`（L32%）。中轴与背景的对比度从 **1.61 → 2.42**；换句话说，此时三条相邻边界
 （对背景 / 对粉 / 对蓝）里最弱的一条也有 **2.39**。
 
-注意这是**变体，不是正式规格**。浅色底上请用定稿版；亮轴变体只在深色 UI 里用。
+注意这是**变体，不是正式规格**。
 算法实现在 `tools/flagkit.py` 的 `solve_dark_axis()`，换背景色重跑即可。
 
 ---
@@ -134,7 +143,7 @@ python tools/verify.py
 > 署 AI 的名字**不是权利主张**。CC0 之下谁也不拥有这面旗，这一行只是「谁做的」的记录。
 > 设计方向（中轴翻暗、粉蓝对调、粉推到 H300°）由 Sakamonya 决定；把决定做成图、脚本和文档的是蓝色大肥鱼。
 
-本仓库全部内容采用 **CC0 1.0**（放弃一切权利，进入公有领域），见 `LICENSE`。
+本仓库中**由本项目产生的全部内容**采用 **CC0 1.0**（放弃一切权利，进入公有领域），见 `LICENSE`。
 CC0 意味着可以商用、改造、不署名地使用，包括旗帜本身。
 愿意的话可以顺手署名：原设计 Monica Helms（1999），高对比衍生版 Sakamonya。
 

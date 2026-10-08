@@ -19,7 +19,7 @@ PALETTE = {
     "axis": "#383838",
 }
 
-#: 深底亮轴变体：只改中轴，留给深色 UI 用。
+#: 深底亮轴变体：只改中轴。
 DARK_VARIANT_AXIS = None  # 由 solve_dark_axis() 求值
 
 #: 五条结构，上到下。对称。

@@ -148,12 +148,23 @@ def main() -> int:
         print(f"  ok    {rel}  {im.size[0]}x{im.size[1]}  {size/1024:.0f} KB")
 
     print("\n效果图用色（关键色必须出现）")
-    for rel in ("preview/01-hero.png", "preview/02-compare.png", "preview/04-color-spec.png"):
+    # 深色 hero 走亮轴变体：中轴 #383838 贴深色背景只有 1.27–1.40:1，会被吃掉。
+    # 浅色 hero 与规格图 / 对比图必须仍是正式规格——对比图里的数字要和 README 表格一致。
+    PREVIEW_COLORS = {
+        "preview/01-hero.png": DARKV,
+        "preview/01-hero-light.png": CANON,
+        "preview/02-compare.png": CANON,
+        "preview/04-color-spec.png": CANON,
+        # 社交卡只有一张、底色是 #0D1117，中轴 #383838 在上面只有 1.61:1，故用亮轴变体
+        "assets/social-card-1200x630.png": DARKV,
+    }
+    for rel, want in PREVIEW_COLORS.items():
         im = Image.open(ROOT / rel).convert("RGB")
         got = {fk.rgb_to_hex(c) for _, c in im.getcolors(maxcolors=1 << 24)}
-        for name, col in CANON.items():
+        for name, col in want.items():
             check(col in got, f"{rel} 中找不到 {name} {col}")
-        print(f"  ok    {rel}  含全部正式色值")
+        if all(col in got for col in want.values()):
+            print(f"  ok    {rel}  {' '.join(want.values())}")
 
     print("\n原版条纹顺序（对比图里 1999 版必须蓝在外圈）")
     for rel in ("preview/02-compare.png", "preview/02-compare-light.png"):
