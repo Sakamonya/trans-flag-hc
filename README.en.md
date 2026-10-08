@@ -12,7 +12,7 @@ The flag is legible only because of the white stripe in the middle. Here every a
 is pulled apart, so the structure survives being scaled down, placed on dark backgrounds,
 or embroidered.
 
-> **Get it** ｜ [SVG](flag/trans-flag-hc.svg) ｜ [1500×900](flag/trans-flag-hc-1500x900.png) ｜ [3000×1800](flag/trans-flag-hc-3000x1800.png) ｜ [avatar](assets/avatar-1080.png) ｜ [wallpaper](assets/wallpaper-1200x1800.png) ｜ [dark-UI variant](flag/trans-flag-hc-dark-ui-1500x900.png) ｜ [colouriser](https://wee23rer.github.io/trans-flag-hc/)
+> **Get it** ｜ [SVG](flag/trans-flag-hc.svg) ｜ [1500×900](flag/trans-flag-hc-1500x900.png) ｜ [3000×1800](flag/trans-flag-hc-3000x1800.png) ｜ [avatar](assets/avatar-1080.png) ｜ [wallpaper](assets/wallpaper-1200x1800.png) ｜ [dark-UI variant](flag/trans-flag-hc-dark-ui-1500x900.png) ｜ [colouriser](https://sakamonya.github.io/trans-flag-hc/)
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="preview/01-hero.png">
@@ -163,7 +163,7 @@ luminance, not structure.
 
 ## Colouriser
 
-**Live version: <https://wee23rer.github.io/trans-flag-hc/>**
+**Live version: <https://sakamonya.github.io/trans-flag-hc/>**
 
 `docs/index.html` is a **single file** with no dependencies: you can also download it and open it directly.
 

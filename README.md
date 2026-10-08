@@ -10,7 +10,7 @@
 原版粉与蓝的对比度只有 **1.04 : 1**——几乎等于没有，整面旗靠中间那条白撑住辨识度。
 这一版把每个相邻边界都拉开，所以缩小、叠深色底、上刺绣，结构都还在。
 
-> **直接取用** ｜ [矢量 SVG](flag/trans-flag-hc.svg) ｜ [主图 1500×900](flag/trans-flag-hc-1500x900.png) ｜ [高清 3000×1800](flag/trans-flag-hc-3000x1800.png) ｜ [头像](assets/avatar-1080.png) ｜ [手机壁纸](assets/wallpaper-1200x1800.png) ｜ [深色底亮轴版](flag/trans-flag-hc-dark-ui-1500x900.png) ｜ [在线调色器](https://wee23rer.github.io/trans-flag-hc/)
+> **直接取用** ｜ [矢量 SVG](flag/trans-flag-hc.svg) ｜ [主图 1500×900](flag/trans-flag-hc-1500x900.png) ｜ [高清 3000×1800](flag/trans-flag-hc-3000x1800.png) ｜ [头像](assets/avatar-1080.png) ｜ [手机壁纸](assets/wallpaper-1200x1800.png) ｜ [深色底亮轴版](flag/trans-flag-hc-dark-ui-1500x900.png) ｜ [在线调色器](https://sakamonya.github.io/trans-flag-hc/)
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="preview/01-hero.png">
@@ -148,7 +148,7 @@
 
 ## 调色器
 
-**在线版：<https://wee23rer.github.io/trans-flag-hc/>**
+**在线版：<https://sakamonya.github.io/trans-flag-hc/>**
 
 `docs/index.html` 是**单文件网页**，无外部依赖：也可以下载下来双击打开。
 
