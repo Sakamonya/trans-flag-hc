@@ -154,11 +154,11 @@ def main() -> int:
         print(f"  ok    {rel}  含全部正式色值")
 
     print("\n调色器网页默认值")
-    page = (ROOT / "web" / "index.html").read_text(encoding="utf-8")
+    page = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     for name, col in CANON.items():
-        check(col in page, f"web/index.html 缺少 {name} {col}")
-    check(str(DARK_AXIS) in page, f"web/index.html 缺少亮轴变体 {DARK_AXIS}")
-    print(f"  ok    web/index.html  含 {CANON['pink']} / {CANON['blue']} / {CANON['axis']} / {DARK_AXIS}")
+        check(col in page, f"docs/index.html 缺少 {name} {col}")
+    check(str(DARK_AXIS) in page, f"docs/index.html 缺少亮轴变体 {DARK_AXIS}")
+    print(f"  ok    docs/index.html  含 {CANON['pink']} / {CANON['blue']} / {CANON['axis']} / {DARK_AXIS}")
 
     print("\n文档")
     for rel in ("README.md", "README.en.md", "LICENSE", "docs/design-notes.md"):

@@ -10,7 +10,7 @@
 原版粉与蓝的对比度只有 **1.04 : 1**——几乎等于没有，整面旗靠中间那条白撑住辨识度。
 这一版把每个相邻边界都拉开，所以缩小、叠深色底、上刺绣，结构都还在。
 
-> **直接取用** ｜ [矢量 SVG](flag/trans-flag-hc.svg) ｜ [主图 1500×900](flag/trans-flag-hc-1500x900.png) ｜ [高清 3000×1800](flag/trans-flag-hc-3000x1800.png) ｜ [头像](assets/avatar-1080.png) ｜ [手机壁纸](assets/wallpaper-1200x1800.png) ｜ [深色底亮轴版](flag/trans-flag-hc-dark-ui-1500x900.png) ｜ [在线调色器](web/index.html)
+> **直接取用** ｜ [矢量 SVG](flag/trans-flag-hc.svg) ｜ [主图 1500×900](flag/trans-flag-hc-1500x900.png) ｜ [高清 3000×1800](flag/trans-flag-hc-3000x1800.png) ｜ [头像](assets/avatar-1080.png) ｜ [手机壁纸](assets/wallpaper-1200x1800.png) ｜ [深色底亮轴版](flag/trans-flag-hc-dark-ui-1500x900.png) ｜ [在线调色器](https://wee23rer.github.io/trans-flag-hc/)
 
 ![跨性别骄傲旗高对比版](preview/01-hero.png)
 
@@ -130,7 +130,7 @@
 | `assets/wallpaper-1200x1800.png` `wallpaper-1440x3120.png` | 竖版 | 手机壁纸 |
 | `assets/social-card-1200x630.png` | 1200×630 | 社交分享卡（GitHub 仓库 Social preview 直接用） |
 | `preview/` | — | 全部效果图 |
-| `web/index.html` | — | 单文件调色器 |
+| `docs/index.html` | — | 单文件调色器（GitHub Pages 入口） |
 
 ### 变体一览
 
@@ -142,7 +142,9 @@
 
 ## 调色器
 
-`web/index.html` 是**单文件网页**，无外部依赖：双击打开，或直接挂到 GitHub Pages。
+**在线版：<https://wee23rer.github.io/trans-flag-hc/>**
+
+`docs/index.html` 是**单文件网页**，无外部依赖：也可以下载下来双击打开。
 
 - 粉 / 蓝 / 中轴三色独立调，滑杆调明度
 - 中轴宽度 0.4×–2.2×，一键对调粉蓝内外圈

@@ -12,7 +12,7 @@ The flag is legible only because of the white stripe in the middle. Here every a
 is pulled apart, so the structure survives being scaled down, placed on dark backgrounds,
 or embroidered.
 
-> **Get it** ｜ [SVG](flag/trans-flag-hc.svg) ｜ [1500×900](flag/trans-flag-hc-1500x900.png) ｜ [3000×1800](flag/trans-flag-hc-3000x1800.png) ｜ [avatar](assets/avatar-1080.png) ｜ [wallpaper](assets/wallpaper-1200x1800.png) ｜ [dark-UI variant](flag/trans-flag-hc-dark-ui-1500x900.png) ｜ [colouriser](web/index.html)
+> **Get it** ｜ [SVG](flag/trans-flag-hc.svg) ｜ [1500×900](flag/trans-flag-hc-1500x900.png) ｜ [3000×1800](flag/trans-flag-hc-3000x1800.png) ｜ [avatar](assets/avatar-1080.png) ｜ [wallpaper](assets/wallpaper-1200x1800.png) ｜ [dark-UI variant](flag/trans-flag-hc-dark-ui-1500x900.png) ｜ [colouriser](https://wee23rer.github.io/trans-flag-hc/)
 
 ![Trans pride flag, high contrast edition](preview/01-hero.png)
 
@@ -145,7 +145,7 @@ luminance, not structure.
 | `assets/wallpaper-*.png` | portrait | phone wallpapers |
 | `assets/social-card-1200x630.png` | 1200×630 | social card (drop straight into GitHub Social preview) |
 | `preview/` | — | all preview images |
-| `web/index.html` | — | single-file colouriser |
+| `docs/index.html` | — | single-file colouriser (GitHub Pages entry) |
 
 ### Every variant at a glance
 
@@ -157,8 +157,9 @@ luminance, not structure.
 
 ## Colouriser
 
-`web/index.html` is a **single file** with no dependencies: open it directly, or serve it from
-GitHub Pages.
+**Live version: <https://wee23rer.github.io/trans-flag-hc/>**
+
+`docs/index.html` is a **single file** with no dependencies: you can also download it and open it directly.
 
 - Independent pink / blue / axis controls, lightness sliders
 - Axis width 0.4×–2.2×, one-click swap of pink and blue
