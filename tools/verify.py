@@ -83,6 +83,7 @@ PREVIEWS = [
     "preview/03-legibility.png",
     "preview/04-color-spec.png", "preview/05-scene-dark-ui.png", "preview/06-cloth.png",
     "preview/07-dark-bg.png", "preview/08-variants.png",
+    "preview/09-colorblind.png",
     "assets/social-card-1200x630.png",
 ]
 
@@ -157,6 +158,8 @@ def main() -> int:
         "preview/04-color-spec.png": CANON,
         # 社交卡只有一张、底色是 #0D1117，中轴 #383838 在上面只有 1.61:1，故用亮轴变体
         "assets/social-card-1200x630.png": DARKV,
+        # 色觉模拟里画了正式规格那一版，三种色值必须都在
+        "preview/09-colorblind.png": CANON,
     }
     for rel, want in PREVIEW_COLORS.items():
         im = Image.open(ROOT / rel).convert("RGB")

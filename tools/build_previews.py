@@ -586,10 +586,85 @@ def fig_variants() -> None:
     print("  08-variants.png")
 
 
+# ------------------------------------------- 09 色觉 / 10 底色矩阵 ----
+
+#: 深色底上的语义色
+D_GREEN, D_AMBER, D_RED = "#3FB950", "#D29922", "#F85149"
+
+#: 色觉模拟矩阵（Viénot 类），作用在**线性** RGB 上
+CVD = {
+    "protanopia":   [[0.567, 0.433, 0.000], [0.558, 0.442, 0.000], [0.000, 0.242, 0.758]],
+    "deuteranopia": [[0.625, 0.375, 0.000], [0.700, 0.300, 0.000], [0.000, 0.300, 0.700]],
+    "tritanopia":   [[0.950, 0.050, 0.000], [0.000, 0.433, 0.567], [0.000, 0.475, 0.525]],
+}
+
+
+def _srgb_to_lin(c: float) -> float:
+    return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+
+
+def _lin_to_srgb(c: float) -> float:
+    c = min(max(c, 0.0), 1.0)
+    return 12.92 * c if c <= 0.0031308 else 1.055 * c ** (1 / 2.4) - 0.055
+
+
+def cvd_sim(hexcol: str, kind) -> str:
+    """色觉模拟。近似，用来观察明度结构，不是医学诊断。"""
+    if kind is None:
+        return hexcol
+    v = np.array([_srgb_to_lin(c / 255) for c in fk.hex_to_rgb(hexcol)])
+    out = np.array(CVD[kind]) @ v
+    return fk.rgb_to_hex(tuple(int(round(_lin_to_srgb(c) * 255)) for c in out))
+
+
+def cvd_palette(colors: dict, kind) -> dict:
+    return {k: cvd_sim(v, kind) for k, v in colors.items()}
+
+
+def fig_colorblind() -> None:
+    W, H = 1760, 1010
+    img, d = canvas(W, H, BG)
+    T(d, 96, 58, "色觉模拟", 50, TXT, "bold")
+    T(d, 96, 124, "红/绿色盲会削弱蓝与中轴的对比（3.59 → 2.1–2.5）；但四种条件下，"
+                  "最弱的那条边界都比 1999 原版强。", 24, TXT2)
+
+    kinds = [(None, "正常视觉", "Normal"), ("protanopia", "红色盲", "Protanopia"),
+             ("deuteranopia", "绿色盲", "Deuteranopia"), ("tritanopia", "蓝色盲", "Tritanopia")]
+    rows = [("高对比版 · 本仓库", fk.PALETTE, fk.BANDS, PINK),
+            ("经典版 · 1999", fk.CLASSIC, fk.CLASSIC_BANDS, TXT2)]
+    fw = 320
+    fh = round(fw * 3 / 5)
+    for i, (kind, zh, en) in enumerate(kinds):
+        x = 96 + i * 408
+        T(d, x, 182, zh, 26, TXT if kind is None else PINK, "semibold")
+        T(d, x, 214, en, 19, TXT3)
+        for r, (label, colors, bands, labcol) in enumerate(rows):
+            y = 268 + r * 350
+            T(d, x, y, label, 21, labcol)
+            c = cvd_palette(colors, kind)
+            panel(img, (x - 12, y + 30, x + fw + 12, y + 30 + fh + 16), radius=14,
+                  fill=PANEL, border=BORDER)
+            paste_flag(img, (x, y + 40, fw, fh), colors=c, radius=6, shadow=False, bands=bands)
+            d = ImageDraw.Draw(img)
+            vals = [("粉 / 轴", fk.contrast(c["pink"], c["axis"])),
+                    ("蓝 / 轴", fk.contrast(c["blue"], c["axis"])),
+                    ("粉 / 蓝", fk.contrast(c["pink"], c["blue"]))]
+            for j, (nm, v) in enumerate(vals):
+                tone = D_GREEN if v >= 3 else (D_AMBER if v >= 1.6 else D_RED)
+                yy = y + fh + 66 + j * 28
+                T(d, x, yy, nm, 19, TXT3)
+                T(d, x + fw, yy, f"{v:.2f}", 19, tone, "semibold", align="r")
+    T(d, 96, 962, "模拟按 Viénot 类矩阵在线性 RGB 上近似，用于说明明度结构，不是医学诊断。",
+      19, TXT3)
+    img.convert("RGB").save(PRE / "09-colorblind.png", optimize=True)
+    print("  09-colorblind.png")
+
+
 FIGS = {
     "hero": fig_hero, "social": fig_social, "compare": fig_compare,
     "legibility": fig_legibility, "spec": fig_spec, "scene": fig_scene,
     "cloth": fig_cloth, "darkbg": fig_darkbg, "variants": fig_variants,
+    "colorblind": fig_colorblind,
 }
 
 

@@ -28,7 +28,7 @@ or embroidered.
 | Design | Usage | More |
 |---|---|---|
 | [vs. the 1999 original](#compare) | [On dark backgrounds](#dark-bg) | [Files](#files) |
-| [Small-size legibility](#legibility) | [Cloth render](#cloth) | [Colouriser](#colorizer) |
+| [Small-size legibility](#legibility) · [Colour vision](#cvd) | [Cloth render](#cloth) | [Colouriser](#colorizer) |
 | [Colour specification](#palette) | [Usage notes](#usage) | [Rebuild](#rebuild) · [Licence](#license) |
 
 ---
@@ -73,6 +73,21 @@ Three decisions:
 
 Below 48 px the classic pink and blue merge into one band. This version still reads as five
 stripes from 24 px upward.
+
+---
+
+<a id="cvd"></a>
+
+## Under colour vision deficiency
+
+![Colour vision simulation](preview/09-colorblind.png)
+
+Protanopia and deuteranopia weaken the blue/axis boundary (3.59 → 2.1–2.5). But **under all four
+conditions the weakest boundary is still stronger than in the 1999 original** — 1.40 at worst here,
+against 1.04 there.
+
+What keeps it working is that every adjacent boundary is a **luminance** boundary rather than a hue
+boundary. Colour vision changes *which* colour you see; it does not change *which side is darker*.
 
 ---
 
