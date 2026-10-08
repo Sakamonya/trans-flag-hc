@@ -82,8 +82,9 @@ stripes from 24 px upward.
 
 ![Colour specification](preview/04-color-spec.png)
 
-There is exactly **one canonical specification** in this repository. The flag files, every preview
-image, and the colouriser's defaults all use it:
+There is exactly **one canonical specification** in this repository. The flag files, the colouriser
+and the preview images all derive from it — except the two dark-context assets (the dark-mode hero and
+the social card), which use the light-axis variant (see [On dark backgrounds](#dark-bg)):
 
 | Stripe | Hex | RGB | HSL |
 |---|---|---|---|
@@ -193,7 +194,7 @@ python tools/verify.py
 the SVGs, the web page defaults and the READMEs are in sync. If you fork this to try another palette,
 run it once and you will know whether anything was missed.
 
-Requirements: Python 3 + Pillow. Chinese glyphs use the system face "DengXian" and Latin uses
+Requirements: Python 3 + Pillow + NumPy. Chinese glyphs use the system face "DengXian" and Latin uses
 Segoe UI; on non-Windows systems replace the font paths in `tools/flagkit.py`.
 
 ---
@@ -206,7 +207,7 @@ Segoe UI; on non-Windows systems replace the font paths in `tools/flagkit.py`.
 - Print, embroidery, heat transfer → **SVG** or the one-colour versions
 - Avatars, stickers → **round badge**
 - Transparent background → export from the SVG
-- Below 24 px wide → use three stripes only, or a one-colour outlined mark
+- Below 24 px wide → use three stripes only, or a one-colour version
 
 ---
 
@@ -251,8 +252,8 @@ direct messages first**.
 The full record of the design decisions — who proposed what, which options were rejected, and the
 measured numbers — is in [`docs/design-notes.md`](docs/design-notes.md) (Chinese).
 
-> "The flag is always right side up — no matter where you are in your life, no matter which way
-> you are going, you can find your own correct."
-> — Monica Helms
+> "The pattern is such that no matter which way you fly it, it will always be correct. This
+> symbolizes us trying to find correctness in our own lives."
+> — Monica Helms, describing the flag's meaning in 1999
 
 [Back to contents](#toc) ｜ [中文 README](README.md)
