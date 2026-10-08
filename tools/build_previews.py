@@ -213,13 +213,14 @@ def fig_compare(theme: str = "dark") -> None:
     T(d, 96, 132, "同一套五条结构，只改明暗关系与色彩强度。下面的数字都是 WCAG 2.1 对比度。",
       24, th["txt2"])
 
-    cols = [(140, "经典版 · 1999", fk.CLASSIC), (860, "高对比版 · 本仓库", fk.PALETTE)]
+    cols = [(140, "经典版 · 1999", fk.CLASSIC, fk.CLASSIC_BANDS),
+            (860, "高对比版 · 本仓库", fk.PALETTE, fk.BANDS)]
     fw, fh = 600, round(600 * 3 / 5)
-    for x, title, colors in cols:
+    for x, title, colors, bands in cols:
         T(d, x, 210, title, 30, th["txt"], "semibold")
         panel(img, (x - 20, 262, x + fw + 20, 262 + fh + 40), radius=18, fill=th["panel"],
               border=th["border"])
-        paste_flag(img, (x, 282, fw, fh), colors, radius=8, shadow=False)
+        paste_flag(img, (x, 282, fw, fh), colors, radius=8, shadow=False, bands=bands)
         d = ImageDraw.Draw(img)
         rows = [("粉 / 中轴", fk.contrast(colors["pink"], colors["axis"])),
                 ("蓝 / 中轴", fk.contrast(colors["blue"], colors["axis"])),
@@ -271,8 +272,8 @@ def legibility_strip(img, row_h, d, x, y, sizes, light: bool, label_w=230) -> No
     for s in sizes:
         ww = round(s * 5 / 3)
         T(d, cx + ww / 2, y - 34, f"{s}px", 20, fg2, "regular", align="c")
-        img.alpha_composite(fk.flag_exact(ww, s, fk.CLASSIC), (cx, y + row_h - s))
-        img.alpha_composite(fk.flag_exact(ww, s, fk.PALETTE), (cx, y2 + row_h - s))
+        img.alpha_composite(fk.flag_exact(ww, s, fk.CLASSIC, fk.CLASSIC_BANDS), (cx, y + row_h - s))
+        img.alpha_composite(fk.flag_exact(ww, s, fk.PALETTE, fk.BANDS), (cx, y2 + row_h - s))
         cx += ww + gap
 
 
@@ -496,17 +497,17 @@ def fig_darkbg() -> None:
       24, TXT2)
 
     cols = [
-        ("经典版 1999", fk.CLASSIC, "中轴是白的，边界 1.87:1", "#FFFFFF"),
-        ("高对比版 · 定稿", fk.PALETTE, "中轴 #383838  边界 1.61:1  ← 会被吃掉", "#FF7B72"),
-        ("亮轴变体 · 深色 UI 专用", DARKC, f"中轴 {DARK_AXIS}  边界 2.42:1", "#3FB950"),
+        ("经典版 1999", fk.CLASSIC, fk.CLASSIC_BANDS, "中轴是白的，边界 1.87:1", "#FFFFFF"),
+        ("高对比版 · 定稿", fk.PALETTE, fk.BANDS, "中轴 #383838  边界 1.61:1  ← 会被吃掉", "#FF7B72"),
+        ("亮轴变体 · 深色 UI 专用", DARKC, fk.BANDS, f"中轴 {DARK_AXIS}  边界 2.42:1", "#3FB950"),
     ]
     cw, ch = round(1200 * 3 / 5), 0
-    for i, (title, colors, note, tone) in enumerate(cols):
+    for i, (title, colors, bands, note, tone) in enumerate(cols):
         x = 80 + i * 424
         w = 360
         h = round(w * 3 / 5)
         panel(img, (x, 210, x + w, 210 + h + 150), radius=16, fill=fk.DARK_BG, border=BORDER)
-        paste_flag(img, (x, 210, w, h), colors, radius=0, shadow=False, bands=fk.BANDS)
+        paste_flag(img, (x, 210, w, h), colors, radius=0, shadow=False, bands=bands)
         d = ImageDraw.Draw(img)
         T(d, x + 20, 210 + h + 24, title, 24, TXT, "semibold")
         T(d, x + 20, 210 + h + 62, note, 21, tone)

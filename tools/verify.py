@@ -155,6 +155,23 @@ def main() -> int:
             check(col in got, f"{rel} 中找不到 {name} {col}")
         print(f"  ok    {rel}  含全部正式色值")
 
+    print("\n原版条纹顺序（对比图里 1999 版必须蓝在外圈）")
+    for rel in ("preview/02-compare.png", "preview/02-compare-light.png"):
+        im = Image.open(ROOT / rel).convert("RGB")
+        x = 440                      # 左列＝原版那一栏的水平中心
+        ys = {}
+        for name in ("blue", "pink"):
+            target = fk.CLASSIC[name]
+            ys[name] = next((y for y in range(im.height)
+                             if fk.rgb_to_hex(im.getpixel((x, y))) == target), None)
+        check(ys["blue"] is not None, f"{rel} 里找不到原版的蓝 {fk.CLASSIC['blue']}")
+        check(ys["pink"] is not None, f"{rel} 里找不到原版的粉 {fk.CLASSIC['pink']}")
+        if ys["blue"] is not None and ys["pink"] is not None:
+            check(ys["blue"] < ys["pink"],
+                  f"{rel} 把 1999 原版画反了：外圈应为蓝，实得粉在上"
+                  f"（blue y={ys['blue']} / pink y={ys['pink']}）")
+            print(f"  ok    {rel}  蓝在粉之上（y {ys['blue']} < {ys['pink']}），顺序正确")
+
     print("\n调色器网页默认值")
     page = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     for name, col in CANON.items():

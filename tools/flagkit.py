@@ -33,6 +33,11 @@ PAPER_BG = "#F6F8FA"
 
 CLASSIC = {"pink": "#F5A9B8", "blue": "#5BCEFA", "axis": "#FFFFFF"}
 
+#: 1999 原版的条纹顺序是「蓝—粉—白—粉—蓝」，**蓝在外圈**。
+#: 本版才是把粉搬到外圈。画对比图时必须用这套顺序，
+#: 否则会把原版画反（2026-10-08 修过一次这个错）。
+CLASSIC_BANDS = ["blue", "pink", "axis", "pink", "blue"]
+
 
 def hex_to_rgb(h: str) -> tuple[int, int, int]:
     h = h.lstrip("#")
