@@ -223,6 +223,7 @@ see [LICENSE](LICENSE).
 |---|---|
 | **Original design** | **Monica Helms**, 1999. She publicly dedicated the Transgender Pride Flag to the trans community |
 | **Derivative design** | **Sakamonya**. Keeps the original five-stripe structure and symmetry, rewrites the light–dark structure and colour intensity |
+| **Implementation** | **蓝色大肥鱼** (Blue Big Fat Fish), an AI assistant — preview images, build scripts, documentation and repository setup |
 
 CC0 means you may use anything here commercially, adapt it, or omit credit — including the flag itself.
 If you would like to credit anyway: original design by Monica Helms (1999), high-contrast derivative
