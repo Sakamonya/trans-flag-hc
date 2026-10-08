@@ -38,6 +38,20 @@ L_BORDER = "#D0D7DE"
 L_TXT = "#1F2328"
 L_TXT2 = "#59636E"
 
+# --------------------------------------------------------------- 主题 ----
+# 深色版：给「深色底演示」类图（可读性 / 色卡 / 深色场景 / 布面 / 变体）
+# 浅色版：给 hero 与对比图 —— GitHub 默认浅色主题下的首屏
+THEMES = {
+    "dark": dict(bg=BG, panel=PANEL, panel2=PANEL2, border=BORDER,
+                 txt=TXT, txt2=TXT2, txt3=TXT3, grid="#262D38", accent=PINK,
+                 shadow_alpha=110, glow=40, chart_classic="#4A5361"),
+    "light": dict(bg="#FFFFFF", panel="#F6F8FA", panel2="#EAEEF2", border="#D0D7DE",
+                  txt="#1F2328", txt2="#59636E", txt3="#6E7781", grid="#D8DEE4",
+                  accent="#C026D3",
+                  shadow_alpha=46, glow=20, chart_classic="#8C959F"),
+}
+SUFFIX = {"dark": "", "light": "-light"}
+
 SERIES = {"classic": "#6E7681", "hc": PINK}
 
 
@@ -69,11 +83,12 @@ def panel(img, box, radius=16, fill=PANEL, border=BORDER, width=1) -> None:
                                           outline=border if border else None, width=width)
 
 
-def paste_flag(img: Image.Image, box, colors=None, radius=10, shadow=True, bands=None) -> None:
+def paste_flag(img: Image.Image, box, colors=None, radius=10, shadow=True, bands=None,
+               shadow_alpha=110) -> None:
     x, y, w, h = box
     fl = fk.flag_exact(w, h, colors, bands, radius=radius)
     if shadow:
-        fk.shadow(img, (x, y, x + w, y + h), radius, offset=(0, 16), blur=30, alpha=110)
+        fk.shadow(img, (x, y, x + w, y + h), radius, offset=(0, 16), blur=30, alpha=shadow_alpha)
     img.alpha_composite(fl, (x, y))
 
 
@@ -89,38 +104,45 @@ def chip(img, d, x, y, color: str, name: str, size=200, gap=28) -> int:
     return size + gap
 
 
-def chip_inline(d, x, y, color: str, name: str, gap=230) -> int:
+def chip_inline(d, x, y, color: str, name: str, gap=230,
+                txt=None, txt3=None) -> int:
     """横排小色卡：方块 + 右侧两行说明。返回占宽。"""
+    txt = txt or TXT
+    txt3 = txt3 or TXT3
     d.rounded_rectangle((x, y, x + 48, y + 48), radius=11, fill=color)
-    T(d, x + 66, y - 6, name, 22, TXT, "semibold")
-    T(d, x + 66, y + 26, color, 20, TXT3, "mono")
+    T(d, x + 66, y - 6, name, 22, txt, "semibold")
+    T(d, x + 66, y + 26, color, 20, txt3, "mono")
     return gap
 
 
 # --------------------------------------------------------- 01 hero ----
 
-def fig_hero() -> None:
+def fig_hero(theme: str = "dark") -> None:
+    th = THEMES[theme]
     W, H = 1600, 1000
-    img, d = canvas(W, H, BG)
-    glow(img, (-260, 260, 1000, 1120), BLUE, alpha=40, blur=150)
-    glow(img, (660, 260, 1900, 1120), PINK, alpha=40, blur=150)
+    img, d = canvas(W, H, th["bg"])
+    glow(img, (-260, 260, 1000, 1120), BLUE, alpha=th["glow"], blur=150)
+    glow(img, (660, 260, 1900, 1120), PINK, alpha=th["glow"], blur=150)
+    d = ImageDraw.Draw(img)
 
-    T(d, W // 2, 62, "BASED ON MONICA HELMS · 1999", 24, TXT3, "regular",
+    T(d, W // 2, 62, "BASED ON MONICA HELMS · 1999", 24, th["txt3"], "regular",
       align="c", tracking=3.4)
-    T(d, W // 2, 102, "跨性别骄傲旗", 66, TXT, "bold", align="c")
-    T(d, W // 2, 190, "高对比版本  ·  High Contrast Edition", 30, PINK, "light",
+    T(d, W // 2, 102, "跨性别骄傲旗", 66, th["txt"], "bold", align="c")
+    T(d, W // 2, 190, "高对比版本  ·  High Contrast Edition", 30, th["accent"], "light",
       align="c", tracking=1.2)
 
     fw = 980
     fh = round(fw * 3 / 5)
-    paste_flag(img, ((W - fw) // 2, 258, fw, fh), radius=14, shadow=True)
+    paste_flag(img, ((W - fw) // 2, 258, fw, fh), radius=14, shadow=True,
+               shadow_alpha=th["shadow_alpha"])
     d = ImageDraw.Draw(img)
 
     x = (W - 3 * 230) // 2
     for name, col in (("粉 Pink", PINK), ("蓝 Blue", BLUE), ("中轴 Axis", AXIS)):
-        x += chip_inline(d, x, 900, col, name)
-    img.convert("RGB").save(PRE / "01-hero.png", optimize=True)
-    print("  01-hero.png")
+        x += chip_inline(d, x, 900, col, name, txt=th["txt"], txt3=th["txt3"])
+    out = f"01-hero{SUFFIX[theme]}.png"
+    img.convert("RGB").save(PRE / out, optimize=True)
+    print(f"  {out}")
 
 
 # ------------------------------------------------------ 02 social ----
@@ -177,19 +199,20 @@ def bar_chart(img, d, box, groups, series, max_v, bg, fg, fg2, border) -> None:
         T(d, cx, y + h + 26, label, 24, fg2, "regular", align="c")
 
 
-def fig_compare() -> None:
+def fig_compare(theme: str = "dark") -> None:
+    th = THEMES[theme]
     W, H = 1600, 1340
-    img, d = canvas(W, H, BG)
-    T(d, 96, 66, "1999 原版  vs  高对比版", 50, TXT, "bold")
+    img, d = canvas(W, H, th["bg"])
+    T(d, 96, 66, "1999 原版  vs  高对比版", 50, th["txt"], "bold")
     T(d, 96, 132, "同一套五条结构，只改明暗关系与色彩强度。下面的数字都是 WCAG 2.1 对比度。",
-      24, TXT2)
+      24, th["txt2"])
 
     cols = [(140, "经典版 · 1999", fk.CLASSIC), (860, "高对比版 · 本仓库", fk.PALETTE)]
     fw, fh = 600, round(600 * 3 / 5)
     for x, title, colors in cols:
-        T(d, x, 210, title, 30, TXT, "semibold")
-        panel(img, (x - 20, 262, x + fw + 20, 262 + fh + 40), radius=18, fill=PANEL,
-              border=BORDER)
+        T(d, x, 210, title, 30, th["txt"], "semibold")
+        panel(img, (x - 20, 262, x + fw + 20, 262 + fh + 40), radius=18, fill=th["panel"],
+              border=th["border"])
         paste_flag(img, (x, 282, fw, fh), colors, radius=8, shadow=False)
         d = ImageDraw.Draw(img)
         rows = [("粉 / 中轴", fk.contrast(colors["pink"], colors["axis"])),
@@ -197,12 +220,13 @@ def fig_compare() -> None:
                 ("粉 / 蓝", fk.contrast(colors["pink"], colors["blue"]))]
         yy = 282 + fh + 42
         for name, v in rows:
-            T(d, x, yy, name, 24, TXT2)
-            T(d, x + fw, yy, f"{v:.2f} : 1", 24, TXT if v > 4 else TXT2, "semibold", align="r")
+            T(d, x, yy, name, 24, th["txt2"])
+            T(d, x + fw, yy, f"{v:.2f} : 1", 24,
+              th["txt"] if v > 4 else th["txt2"], "semibold", align="r")
             yy += 42
 
     gy = 900
-    T(d, 96, gy - 52, "相邻边界对比度", 30, TXT, "semibold")
+    T(d, 96, gy - 52, "相邻边界对比度", 30, th["txt"], "semibold")
     groups = [
         ("粉 / 中轴", {"classic": fk.contrast(fk.CLASSIC["pink"], fk.CLASSIC["axis"]),
                        "hc": fk.contrast(PINK, AXIS)}),
@@ -211,19 +235,21 @@ def fig_compare() -> None:
         ("粉 / 蓝", {"classic": fk.contrast(fk.CLASSIC["pink"], fk.CLASSIC["blue"]),
                      "hc": fk.contrast(PINK, BLUE)}),
     ]
-    series = {"classic": {"color": "#4A5361", "name": "经典版 1999"},
+    series = {"classic": {"color": th["chart_classic"], "name": "经典版 1999"},
               "hc": {"color": PINK, "name": "高对比版"}}
-    bar_chart(img, d, (180, gy, 1120, 300), groups, series, 8, PANEL, TXT, TXT2, BORDER)
+    bar_chart(img, d, (180, gy, 1120, 300), groups, series, 8, th["bg"],
+              th["txt"], th["txt2"], th["grid"])
     lx = 1360
     for i, k in enumerate(("classic", "hc")):
         d.rounded_rectangle((lx, gy + 16 + i * 44, lx + 26, gy + 38 + i * 44), radius=6,
                             fill=series[k]["color"])
-        T(d, lx + 42, gy + 27 + i * 44, series[k]["name"], 24, TXT2, valign="m")
+        T(d, lx + 42, gy + 27 + i * 44, series[k]["name"], 24, th["txt2"], valign="m")
 
     T(d, 96, 1282, "原版粉与蓝的相对亮度几乎持平（1.04），整面旗靠中间那条白撑住辨识度；"
-                   "本版每个相邻边界都拉开，缩小后仍能读出五条。", 24, TXT2)
-    img.convert("RGB").save(PRE / "02-compare.png", optimize=True)
-    print("  02-compare.png")
+                   "本版每个相邻边界都拉开，缩小后仍能读出五条。", 24, th["txt2"])
+    out = f"02-compare{SUFFIX[theme]}.png"
+    img.convert("RGB").save(PRE / out, optimize=True)
+    print(f"  {out}")
 
 
 # -------------------------------------------------- 04 legibility ----
@@ -561,7 +587,11 @@ def main(argv: list[str]) -> None:
     names = argv or list(FIGS)
     print(f"palette pink={PINK} blue={BLUE} axis={AXIS}  dark-axis={DARK_AXIS}")
     for n in names:
-        FIGS[n]()
+        if n in ("hero", "compare"):
+            FIGS[n]("dark")
+            FIGS[n]("light")
+        else:
+            FIGS[n]()
 
 
 if __name__ == "__main__":

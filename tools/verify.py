@@ -78,7 +78,9 @@ MONO = {
 }
 
 PREVIEWS = [
-    "preview/01-hero.png", "preview/02-compare.png", "preview/03-legibility.png",
+    "preview/01-hero.png", "preview/01-hero-light.png",
+    "preview/02-compare.png", "preview/02-compare-light.png",
+    "preview/03-legibility.png",
     "preview/04-color-spec.png", "preview/05-scene-dark-ui.png", "preview/06-cloth.png",
     "preview/07-dark-bg.png", "preview/08-variants.png",
     "assets/social-card-1200x630.png",
@@ -172,11 +174,13 @@ def main() -> int:
         for name, col in CANON.items():
             check(col in text, f"{rel} 缺少 {name} {col}")
 
-    print("\nREADME 图片链接（引用的文件必须真实存在）")
-    ref = re.compile(r"!\[[^\]]*\]\(([^)]+)\)")
+    print("\nREADME 图片链接（markdown 图 + <picture> 里的 src/srcset 都要真实存在）")
+    md_img = re.compile(r"!\[[^\]]*\]\(([^)]+)\)")
+    html_src = re.compile(r'(?:src|srcset)="([^"]+)"')
     for rel in ("README.md", "README.en.md"):
         text = (ROOT / rel).read_text(encoding="utf-8")
-        links = [l.strip() for l in ref.findall(text)]
+        links = [l.strip() for l in md_img.findall(text)]
+        links += [l.strip() for l in html_src.findall(text)]
         check(bool(links), f"{rel} 一个图片链接都没有")
         bad = [l for l in links if not l.startswith("http") and not (ROOT / l).exists()]
         for l in bad:

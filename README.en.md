@@ -14,7 +14,10 @@ or embroidered.
 
 > **Get it** ｜ [SVG](flag/trans-flag-hc.svg) ｜ [1500×900](flag/trans-flag-hc-1500x900.png) ｜ [3000×1800](flag/trans-flag-hc-3000x1800.png) ｜ [avatar](assets/avatar-1080.png) ｜ [wallpaper](assets/wallpaper-1200x1800.png) ｜ [dark-UI variant](flag/trans-flag-hc-dark-ui-1500x900.png) ｜ [colouriser](https://wee23rer.github.io/trans-flag-hc/)
 
-![Trans pride flag, high contrast edition](preview/01-hero.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="preview/01-hero.png">
+  <img alt="Trans pride flag, high contrast edition" src="preview/01-hero-light.png">
+</picture>
 
 ---
 
@@ -34,7 +37,10 @@ or embroidered.
 
 ## How it differs from the 1999 original
 
-![Comparison](preview/02-compare.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="preview/02-compare.png">
+  <img alt="Comparison with the 1999 original" src="preview/02-compare-light.png">
+</picture>
 
 | | Classic 1999 | This version |
 |---|---|---|
@@ -213,11 +219,14 @@ Segoe UI; on non-Windows systems replace the font paths in `tools/flagkit.py`.
 Everything in this repository is released under **CC0 1.0** (all rights waived, public domain),
 see [LICENSE](LICENSE).
 
-The original Transgender Pride Flag was created by **Monica Helms** in 1999 and publicly dedicated
-to the trans community. This is a derivative work that keeps her five-stripe structure and symmetry.
+| | |
+|---|---|
+| **Original design** | **Monica Helms**, 1999. She publicly dedicated the Transgender Pride Flag to the trans community |
+| **Derivative design** | **Sakamonya**. Keeps the original five-stripe structure and symmetry, rewrites the light–dark structure and colour intensity |
 
-If your project requires attribution, you may use CC BY-SA 4.0 instead, crediting Monica Helms
-(original design) and the author of this derivative version.
+CC0 means you may use anything here commercially, adapt it, or omit credit — including the flag itself.
+If you would like to credit anyway: original design by Monica Helms (1999), high-contrast derivative
+by Sakamonya.
 
 The full record of the design decisions — who proposed what, which options were rejected, and the
 measured numbers — is in [`docs/design-notes.md`](docs/design-notes.md) (Chinese).

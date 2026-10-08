@@ -12,7 +12,10 @@
 
 > **直接取用** ｜ [矢量 SVG](flag/trans-flag-hc.svg) ｜ [主图 1500×900](flag/trans-flag-hc-1500x900.png) ｜ [高清 3000×1800](flag/trans-flag-hc-3000x1800.png) ｜ [头像](assets/avatar-1080.png) ｜ [手机壁纸](assets/wallpaper-1200x1800.png) ｜ [深色底亮轴版](flag/trans-flag-hc-dark-ui-1500x900.png) ｜ [在线调色器](https://wee23rer.github.io/trans-flag-hc/)
 
-![跨性别骄傲旗高对比版](preview/01-hero.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="preview/01-hero.png">
+  <img alt="跨性别骄傲旗 · 高对比版" src="preview/01-hero-light.png">
+</picture>
 
 ---
 
@@ -32,7 +35,10 @@
 
 ## 和 1999 原版的差别
 
-![新旧对比](preview/02-compare.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="preview/02-compare.png">
+  <img alt="1999 原版与高对比版对比" src="preview/02-compare-light.png">
+</picture>
 
 | | 经典版 1999 | 本版本 |
 |---|---|---|
@@ -194,9 +200,13 @@ python tools/verify.py
 
 本仓库全部内容采用 **CC0 1.0**（放弃一切权利，进入公有领域），详见 [LICENSE](LICENSE)。
 
-原版跨性别骄傲旗由 **Monica Helms** 于 1999 年创作，她公开将其献给跨性别社群。本版本是它的衍生重设计，保留了五条结构与对称逻辑。
+| | |
+|---|---|
+| **原设计** | **Monica Helms**，1999。她公开将跨性别骄傲旗献给跨性别社群 |
+| **衍生设计** | **Sakamonya**。保留原版五条结构与对称逻辑，重写明暗关系与色彩强度 |
 
-如果你的项目需要署名，可改用 CC BY-SA 4.0，署名 Monica Helms（原设计）与本衍生版作者。
+CC0 意味着你可以商用、改造、不署名地使用本仓库的任何内容——包括这面旗本身。
+如果你愿意顺手回馈一句署名，可以写：原设计 Monica Helms（1999），高对比衍生版 Sakamonya。
 
 设计与取舍的完整记录（谁提的、哪些方案被否掉、数据是多少）见 [`docs/design-notes.md`](docs/design-notes.md)。
 
