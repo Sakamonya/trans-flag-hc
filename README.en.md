@@ -225,9 +225,17 @@ see [LICENSE](LICENSE).
 | **Derivative design** | **Sakamonya**. Keeps the original five-stripe structure and symmetry, rewrites the light–dark structure and colour intensity |
 | **Implementation** | **蓝色大肥鱼** (Blue Big Fat Fish), an AI assistant — preview images, build scripts, documentation and repository setup |
 
-CC0 means you may use anything here commercially, adapt it, or omit credit — including the flag itself.
-If you would like to credit anyway: original design by Monica Helms (1999), high-contrast derivative
-by Sakamonya.
+CC0 means you may use anything here commercially, adapt it, or **omit credit** — including the flag
+itself. Attribution is not a condition of use; it is a sentence you may say if you wish to:
+
+> Original design by Monica Helms (1999), high-contrast derivative by Sakamonya
+> https://github.com/Sakamonya/trans-flag-hc
+
+**First published: 2026-10-08.** The commit, tag (`v1.0.0`) and Release timestamps in this
+repository are publicly verifiable and can be used to establish the earliest provenance of this flag.
+
+**Canonical source**: <https://github.com/Sakamonya/trans-flag-hc>. Accounts with the same name on
+other platforms are not affiliated with this repository.
 
 The full record of the design decisions — who proposed what, which options were rejected, and the
 measured numbers — is in [`docs/design-notes.md`](docs/design-notes.md) (Chinese).

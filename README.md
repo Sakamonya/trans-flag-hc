@@ -206,8 +206,15 @@ python tools/verify.py
 | **衍生设计** | **Sakamonya**。保留原版五条结构与对称逻辑，重写明暗关系与色彩强度 |
 | **实现** | **蓝色大肥鱼**（AI 助手）—— 效果图、构建脚本、文档撰写与仓库发布 |
 
-CC0 意味着你可以商用、改造、不署名地使用本仓库的任何内容——包括这面旗本身。
-如果你愿意顺手回馈一句署名，可以写：原设计 Monica Helms（1999），高对比衍生版 Sakamonya。
+CC0 意味着你可以商用、改造、**不署名**地使用本仓库的任何内容——包括这面旗本身。
+署名不是使用条件，而是一句你愿意的话可以说的话：
+
+> 原设计 Monica Helms（1999），高对比衍生版 Sakamonya
+> https://github.com/Sakamonya/trans-flag-hc
+
+**原始发布时间：2026-10-08。** 本仓库的 commit、tag（`v1.0.0`）与 Release 时间戳都是公开可验证的，可用于确认这面旗的最早出处。
+
+**唯一发布来源**：<https://github.com/Sakamonya/trans-flag-hc>。其它平台上同名的账号与本仓库无关。
 
 设计与取舍的完整记录（谁提的、哪些方案被否掉、数据是多少）见 [`docs/design-notes.md`](docs/design-notes.md)。
 
